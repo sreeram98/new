@@ -1,0 +1,16 @@
+declare
+e_Emp_ID number:=100;
+e_Emp_fname varchar2(50):='sree';
+e_Emp_lname varchar2(50):='LAKSHMI';
+cursor rmp_cursor is select emp_id,emp_fname,emp_lname,emp_salary
+from employeee
+where dept_id=10;
+order by emp_id;
+begin
+open emp_cursor;
+loop
+fetch emp_cursor into e_emp_id,emp_fname,emp_lname;
+exist when emp_cursor '\not found';
+dbms_output.put_line('employee details are' ||e_emp_id||''||e_emp_fname||''||e_emp_lname||''||e_emp_salary);
+end;
+/
